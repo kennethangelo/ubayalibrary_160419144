@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/programming/kotlin/UbayaLibrary_160419144/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/programming/kotlin/UbayaLibrary_160419144/app/src/main/res/layout/book_list_item.xml" value="0.10461956521739131" />
         <entry key="..\:/programming/kotlin/UbayaLibrary_160419144/app/src/main/res/layout/fragment_author.xml" value="0.10104166666666667" />
         <entry key="..\:/programming/kotlin/UbayaLibrary_160419144/app/src/main/res/layout/fragment_book_list.xml" value="0.10104166666666667" />
         <entry key="..\:/programming/kotlin/UbayaLibrary_160419144/app/src/main/res/layout/fragment_detail_book.xml" value="0.10104166666666667" />

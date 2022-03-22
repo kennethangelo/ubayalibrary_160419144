@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
 
 class HomeFragment : Fragment() {
+    private val homeAdapter  = HomeAdapter(arrayListOf())
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
-
     }
 }
