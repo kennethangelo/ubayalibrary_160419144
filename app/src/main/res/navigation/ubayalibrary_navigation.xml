@@ -3,23 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ubayalibrary_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/itemHome">
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/itemHome"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_detailBookFragment"
+            android:id="@+id/actionHomeToDetailFragment"
             app:destination="@id/detailBookFragment" />
     </fragment>
     <fragment
@@ -62,7 +53,7 @@
             app:destination="@id/detailBookFragment" />
     </fragment>
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/itemSearch"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
@@ -76,7 +67,7 @@
         android:label="fragment_review"
         tools:layout="@layout/fragment_review" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/itemProfile"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
@@ -107,4 +98,18 @@
             android:id="@+id/action_detailProfileFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/itemArticle"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" >
+        <action
+            android:id="@+id/action_articleFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailArticleFragment"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DetailArticleFragment"
+        android:label="fragment_detail_article"
+        tools:layout="@layout/fragment_detail_article" />
 </navigation>
