@@ -34,7 +34,7 @@ class HomeAdapter(val bookList:ArrayList<Book>): RecyclerView.Adapter<HomeAdapte
                 txtTitle.text = "${book.title.toString().substring(0,13)}..."
             else
                 txtTitle.text = book.title.toString()
-            txtAuthor.text = book.author.toString()
+//            txtAuthor.text = book.author.toString()
             btnDetail.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeToDetailFragment(book.id.toString())
                 Navigation.findNavController(it).navigate(action)

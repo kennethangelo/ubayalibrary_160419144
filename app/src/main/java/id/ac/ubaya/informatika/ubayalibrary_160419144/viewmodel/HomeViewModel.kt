@@ -37,11 +37,11 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-                //TypeToken -> retrieve the obj type of list of student
+                //TypeToken -> retrieve the obj type of list of book
                 val sType = object: TypeToken<List<Book>>() {}.type
-                //fromJson -> convert JSON string to list of student
+                //fromJson -> convert JSON string to list of book
                 val result = Gson().fromJson<List<Book>>(it, sType)
-                //Update the student LD which is being observed by Student List Fragment
+                //Update the student LD which is being observed by Book List Fragment
                 booksLD.value = result
                 loadingLD.value = false
                 Log.d("showvolley", result.toString())
