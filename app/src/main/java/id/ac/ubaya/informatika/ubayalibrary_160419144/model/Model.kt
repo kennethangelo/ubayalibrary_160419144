@@ -4,12 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class Book(
     val id:String?,
+    val title:String?,
+    val imgUrl:String?,
     //To fix mismatch name with the JSON field name
-    @SerializedName("student_name")
-    val name:String?,
-    @SerializedName("birth_of_date")
-    val dob:String?,
-    val phone:String?,
-    @SerializedName("photo_url")
-    val photoUrl:String?
+    @SerializedName("description")
+    val desc:String?,
+    @SerializedName("total_pages")
+    val pages:Int?,
+    val author:String?,
+    val genre:String?,
+    val publisher: String?
 )

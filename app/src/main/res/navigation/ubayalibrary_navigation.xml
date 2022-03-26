@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_detailBookFragment_to_authorFragment"
             app:destination="@id/authorFragment" />
+        <argument
+            android:name="bookID"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/authorFragment"

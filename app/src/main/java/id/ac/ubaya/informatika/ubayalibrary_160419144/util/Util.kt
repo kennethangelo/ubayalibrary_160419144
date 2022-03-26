@@ -1,5 +1,6 @@
 package id.ac.ubaya.informatika.ubayalibrary_160419144.util
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -13,8 +14,7 @@ import java.lang.Exception
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
     Picasso.get()
         .load(url)
-        .resize(400,400)
-        .centerCrop()
+        .resize(500,400)
         .error(R.drawable.ic_baseline_error_24)
         .into(this, object: Callback {
             override fun onSuccess() {
@@ -22,7 +22,7 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
             }
 
             override fun onError(e: Exception?) {
-
+                Log.d("error", e.toString())
             }
         }) //In case it's failed to load, it uses custom drawable to replace the image
 }
