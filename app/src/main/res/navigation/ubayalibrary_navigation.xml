@@ -45,6 +45,12 @@
         <action
             android:id="@+id/action_detailBookListFragment_to_detailBookFragment"
             app:destination="@id/detailBookFragment" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemSearch"
@@ -52,7 +58,7 @@
         android:label="Search"
         tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_searchFragment_to_detailBookListFragment"
+            android:id="@+id/actionSearchToDetailBookListFragment"
             app:destination="@id/detailBookListFragment" />
     </fragment>
     <fragment

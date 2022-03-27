@@ -16,6 +16,7 @@ data class Article(
     val id:String?,
     val title:String?,
     @SerializedName("date_added")
+    val dob:String?,
     val content:String?,
     val username:String?,
     @SerializedName("contentImg")
@@ -40,12 +41,12 @@ data class Book(
     @SerializedName("total_pages")
     val pages:Int?,
 //    val author:Author?,
-//    val genre:Genre?,
+//    val category:Category?,
 //    val publisher: Publisher?,
 //    val reviews: Review?,
 )
 
-data class Genre(
+data class Category(
     val id:String?,
     val name:String?,
     @SerializedName("description")

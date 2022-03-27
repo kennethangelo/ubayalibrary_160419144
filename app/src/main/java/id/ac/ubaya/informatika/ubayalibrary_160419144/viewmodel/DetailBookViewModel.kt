@@ -13,17 +13,18 @@ import com.google.gson.reflect.TypeToken
 import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Book
 
 class DetailBookViewModel(application: Application): AndroidViewModel(application) {
-    val studentLD = MutableLiveData<Book>()
+    val bookLD = MutableLiveData<Book>()
     //TAG variable useful on volley request cancellation & delete inside refresh method
     val TAG = "volleyTag"
     private var queue: RequestQueue?= null
 //        }
 
-    fun fetch(studentID: String) {
-        val id = studentID
+    fun fetch(bookID: String) {
+        val id = bookID
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-        val url = "http://adv.jitusolution.com/student.php?id=$id"
+//        val url = "http://10.0.2.2/ubayalibrary/book.php?id=$id"
+        val url = "http://192.168.0.8/ubayalibrary/book.php?id=$id"
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
@@ -33,7 +34,7 @@ class DetailBookViewModel(application: Application): AndroidViewModel(applicatio
                 //fromJson -> convert JSON string to list of student
                 val result = Gson().fromJson<Book>(it, sType)
                 //Update the student LD which is being observed by Student List Fragment
-                studentLD.value = result
+                bookLD.value = result
                 Log.d("showvolley", it)
             },
             {

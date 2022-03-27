@@ -26,3 +26,18 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
             }
         }) //In case it's failed to load, it uses custom drawable to replace the image
 }
+
+fun ImageView.loadArticleImage(url: String?, progressBar: ProgressBar){
+    Picasso.get()
+        .load(url)
+        .error(R.drawable.ic_baseline_error_24)
+        .into(this, object: Callback {
+            override fun onSuccess() {
+                progressBar.visibility = View.GONE
+            }
+
+            override fun onError(e: Exception?) {
+                Log.d("error", e.toString())
+            }
+        }) //In case it's failed to load, it uses custom drawable to replace the image
+}

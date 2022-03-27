@@ -32,7 +32,8 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
 
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-        val url = "http://10.0.2.2/ubayalibrary/books.php";
+//        val url = "http://10.0.2.2/ubayalibrary/book.php";
+        val url = "http://192.168.0.8/ubayalibrary/book.php";
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
