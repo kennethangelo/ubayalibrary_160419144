@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
-    private val homeAdapter  = HomeAdapter(arrayListOf())
+    private val homeAdapter  = BookAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

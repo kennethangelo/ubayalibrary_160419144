@@ -11,9 +11,8 @@ import id.ac.ubaya.informatika.ubayalibrary_160419144.R
 import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Book
 import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
 import kotlinx.android.synthetic.main.book_list_item.view.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 
-class HomeAdapter(val bookList:ArrayList<Book>): RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class BookAdapter(val bookList:ArrayList<Book>): RecyclerView.Adapter<BookAdapter.HomeViewHolder>() {
     class HomeViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
