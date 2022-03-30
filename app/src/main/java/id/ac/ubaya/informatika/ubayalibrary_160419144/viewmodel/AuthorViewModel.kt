@@ -40,10 +40,10 @@ class AuthorViewModel (application: Application): AndroidViewModel(application) 
 
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-//        val url = "http://10.0.2.2/ubayalibrary/author.php?id=$id";
-        val url = "http://192.168.0.8/ubayalibrary/author.php?id=$id";
-//        val url2 = "http://10.0.2.2/ubayalibrary/book.php?id=$id";
-        val url2 = "http://192.168.0.8/ubayalibrary/book.php?author=$id";
+        val url = "http://10.0.2.2/ubayalibrary/author.php?id=$id";
+//        val url = "http://192.168.0.8/ubayalibrary/author.php?id=$id";
+        val url2 = "http://10.0.2.2/ubayalibrary/book.php?authorID=$id";
+//        val url2 = "http://192.168.0.8/ubayalibrary/book.php?author=$id";
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
@@ -67,6 +67,7 @@ class AuthorViewModel (application: Application): AndroidViewModel(application) 
         val stringRequest2 = StringRequest(
             Request.Method.GET, url2,
             {
+                Log.d("books", it.toString())
                 //TypeToken -> retrieve the obj type of list of booklist
                 val sType = object: TypeToken<List<Book>>() {}.type
                 //fromJson -> convert JSON string to list of booklist

@@ -23,8 +23,8 @@ class DetailArticleViewModel(application: Application): AndroidViewModel(applica
         val id = articleID
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-//        val url = "http://10.0.2.2/ubayalibrary/article.php?id=$id"
-        val url = "http://192.168.0.8/ubayalibrary/article.php?id=$id"
+        val url = "http://10.0.2.2/ubayalibrary/article.php?id=$id"
+//        val url = "http://192.168.0.8/ubayalibrary/article.php?id=$id"
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,

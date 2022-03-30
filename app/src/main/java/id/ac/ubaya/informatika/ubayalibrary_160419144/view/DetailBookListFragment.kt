@@ -5,11 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
-import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadArticleImage
-import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
-import kotlinx.android.synthetic.main.fragment_detail_article.*
 
 class DetailBookListFragment : Fragment() {
     override fun onCreateView(
@@ -25,23 +21,23 @@ class DetailBookListFragment : Fragment() {
         //Students LiveData (observable) attached to this fragment (observer)
         //Everytime observer changes state -> observable emit the data
         //Used to "observe" Article data
-        detailArticleViewModel.articleLD.observe(viewLifecycleOwner) {
-            txtDetailArticleTitle.setText(it.title)
-            txtDetailArticleUsername.setText(it.username)
-            txtDetailArticleContent.setText(it.content)
-            txtDetailArticleDate.setText(it.dob)
-            imgDetailArticle.loadArticleImage(it.imgUrl, progressImgDetailArticle)
-        }
+//        detailArticleViewModel.articleLD.observe(viewLifecycleOwner) {
+//            txtDetailArticleTitle.setText(it.title)
+//            txtDetailArticleUsername.setText(it.username)
+//            txtDetailArticleContent.setText(it.content)
+//            txtDetailArticleDate.setText(it.dob)
+//            imgDetailArticle.loadArticleImage(it.imgUrl, progressImgDetailArticle)
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            val articleID = DetailArticleFragmentArgs.fromBundle(requireArguments()).idArticle
-            detailArticleViewModel = ViewModelProvider(this).get(DetailArticleViewModel::class.java)
-            detailArticleViewModel.fetch(articleID)
-            observeViewModel()
-        }
+//        arguments?.let {
+//            val articleID = DetailArticleFragmentArgs.fromBundle(requireArguments()).idArticle
+//            detailArticleViewModel = ViewModelProvider(this).get(DetailArticleViewModel::class.java)
+//            detailArticleViewModel.fetch(articleID)
+//            observeViewModel()
+//        }
     }
 }

@@ -10,11 +10,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Author
 import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Book
 
 class HomeViewModel(application: Application): AndroidViewModel(application) {
     //Live data that "emit" books data (in list form)
     val booksLD = MutableLiveData<List<Book>>()
+    val authorLD = MutableLiveData<List<Author>>()
     //Live data that "emit" error status (boolean)
     val bookLoadErrorLD = MutableLiveData<Boolean>()
     //Live data that "emit" data loading status (boolean)
@@ -32,10 +34,29 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
 
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-//        val url = "http://10.0.2.2/ubayalibrary/book.php";
-        val url = "http://192.168.0.8/ubayalibrary/book.php";
+        val url = "http://10.0.2.2/ubayalibrary/book.php";
+//        val url = "http://192.168.0.8/ubayalibrary/book.php";
 
         val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                //TypeToken -> retrieve the obj type of list of book
+                val sType = object: TypeToken<List<Book>>() {}.type
+                //fromJson -> convert JSON string to list of book
+                val result = Gson().fromJson<List<Book>>(it, sType)
+                //Update the student LD which is being observed by Book List Fragment
+                booksLD.value = result
+                loadingLD.value = false
+                Log.d("showvolley", result.toString())
+            },
+            {
+                Log.d("showerror", it.toString())
+                bookLoadErrorLD.value = true
+                loadingLD.value = true
+            }
+        )
+
+        val stringRequest2 = StringRequest(
             Request.Method.GET, url,
             {
                 //TypeToken -> retrieve the obj type of list of book

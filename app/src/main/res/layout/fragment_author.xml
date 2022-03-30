@@ -32,19 +32,21 @@
         android:id="@+id/consLayoutAuthor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="98dp">
 
         <TextView
             android:id="@+id/txtAuthorBio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="22dp"
             android:layout_marginEnd="16dp"
             android:text="This is my bio."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgAuthor" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAuthorTotalRating" />
 
         <View
             android:id="@+id/view"

@@ -28,6 +28,7 @@ class SearchCategoryAdapter(val categoryList:ArrayList<Category>): RecyclerView.
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = categoryList[position]
         with(holder.view){
+            txtCategoryName.text = category.name
             cardCategory.setOnClickListener {
                 val action = SearchFragmentDirections.actionSearchToDetailBookListFragment("category", category.id.toString())
                 Navigation.findNavController(it).navigate(action)

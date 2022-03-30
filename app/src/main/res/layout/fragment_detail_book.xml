@@ -7,13 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".view.DetailBookFragment" >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
+    <ProgressBar
+        android:id="@+id/pbDetailBook"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDetailBookError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error while loading data."
+        app:layout_constraintBottom_toBottomOf="@+id/scrollDetailBook"
+        app:layout_constraintEnd_toEndOf="@+id/scrollDetailBook"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollDetailBook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:fillViewport="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -26,8 +49,11 @@
                 android:id="@+id/txtDetailBookTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Lorem Ipsum Dolor Sit Amet"
+                android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,86 +80,47 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgDetailBookTitle" />
 
-            <RatingBar
-                android:id="@+id/ratingBar2"
-                android:layout_width="244dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="60dp"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookTitle" />
-
             <TextView
                 android:id="@+id/txtDetailBookAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
                 android:text="by John Doe"
-                app:layout_constraintEnd_toEndOf="@+id/view2"
-                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookTitle" />
-
-            <TextView
-                android:id="@+id/txtDetailBookStars"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="88dp"
-                android:text="4.20"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookTitle" />
-
-            <View
-                android:id="@+id/view2"
-                android:layout_width="2dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="192dp"
-                android:background="#000000"
-                app:layout_constraintEnd_toEndOf="@+id/ratingBar2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDetailBookTitle" />
 
             <View
                 android:id="@+id/view3"
                 android:layout_width="2dp"
                 android:layout_height="50dp"
-                android:background="#000000"
-                tools:layout_editor_absoluteX="204dp"
-                tools:layout_editor_absoluteY="478dp" />
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="27dp"
                 android:background="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="545dp" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookAuthor" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="77dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="64dp"
                 android:text="Published by"
                 app:layout_constraintEnd_toEndOf="@+id/view3"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="478dp" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookAuthor" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
                 android:text="Number of pages"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/view3"
-                tools:layout_editor_absoluteY="478dp" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookAuthor" />
 
             <TextView
                 android:id="@+id/txtDetailBookPublisher"
@@ -151,31 +138,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="64dp"
-                android:text="000"
-                app:layout_constraintStart_toEndOf="@+id/view3"
-                tools:layout_editor_absoluteY="509dp" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
-                android:text="pages"
-                app:layout_constraintStart_toEndOf="@+id/txtDetailBookPages"
+                android:text="000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.224"
+                app:layout_constraintStart_toEndOf="@+id/view3"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Description"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="564dp" />
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="81dp"
+                android:layout_marginEnd="16dp"
+                android:background="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDetailBookPublisher" />
 
             <TextView
                 android:id="@+id/txtDetailBookDescription"
@@ -186,8 +181,33 @@
                 android:layout_marginEnd="16dp"
                 android:text="Lorem ipsum dolor sit amet"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <ProgressBar
+                android:id="@+id/pbDetailBookImg"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imgDetailBookTitle"
+                app:layout_constraintEnd_toEndOf="@+id/imgDetailBookTitle"
+                app:layout_constraintStart_toStartOf="@+id/imgDetailBookTitle"
+                app:layout_constraintTop_toTopOf="@+id/imgDetailBookTitle" />
+
+            <Button
+                android:id="@+id/btnDetailBookRating"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="See All Reviews"
+                app:layout_constraintBottom_toTopOf="@+id/view4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

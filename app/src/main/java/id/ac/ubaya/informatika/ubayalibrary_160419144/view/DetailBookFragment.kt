@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
-import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadArticleImage
-import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
-import kotlinx.android.synthetic.main.fragment_detail_article.*
-import java.util.concurrent.TimeUnit
+import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
+import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailBookViewModel
+import kotlinx.android.synthetic.main.fragment_detail_book.*
 
 class DetailBookFragment : Fragment() {
+    private lateinit var detailBookViewModel: DetailBookViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,12 +29,43 @@ class DetailBookFragment : Fragment() {
         //Students LiveData (observable) attached to this fragment (observer)
         //Everytime observer changes state -> observable emit the data
         //Used to "observe" Article data
-        detailArticleViewModel.articleLD.observe(viewLifecycleOwner) {
-            txtDetailArticleTitle.setText(it.title)
-            txtDetailArticleUsername.setText(it.username)
-            txtDetailArticleContent.setText(it.content)
-            txtDetailArticleDate.setText(it.dob)
-            imgDetailArticle.loadArticleImage(it.imgUrl, progressImgDetailArticle)
+        detailBookViewModel.bookLD.observe(viewLifecycleOwner) {
+            val author = it.author
+            val book = it
+            txtDetailBookTitle.text = it.title
+            txtDetailBookAuthor.text = "by ${it.author!!.fullname}"
+            txtDetailBookCategory.text = it.category!!.name
+            txtDetailBookPublisher.text = it.publisher!!.name
+            txtDetailBookPages.text = it.pages.toString()
+            txtDetailBookDescription.text = it.desc
+            imgDetailBookTitle.loadImage(it.imgUrl, pbDetailBookImg, 900, 600)
+            txtDetailBookAuthor.setOnClickListener {
+                val action = DetailBookFragmentDirections.actionDetailBookFragmentToAuthorFragment(author!!.id.toString())
+                Navigation.findNavController(it).navigate(action)
+            }
+
+            btnDetailBookRating.setOnClickListener{
+                val action = DetailBookFragmentDirections.actionDetailBookFragmentToReviewFragment(book!!.id.toString())
+                Navigation.findNavController(it).navigate(action)
+            }
+        }
+
+        detailBookViewModel.loadingLD.observe(viewLifecycleOwner) {
+            if (it == true) {
+                txtDetailBookError.visibility = View.VISIBLE
+            } else {
+                txtDetailBookError.visibility = View.GONE
+            }
+        }
+
+        detailBookViewModel.loadingLD.observe(viewLifecycleOwner) {
+            if (it == true) {
+                scrollDetailBook.visibility = View.GONE
+                pbDetailBook.visibility = View.VISIBLE
+            } else {
+                scrollDetailBook.visibility = View.VISIBLE
+                pbDetailBook.visibility = View.GONE
+            }
         }
     }
 
@@ -40,10 +73,12 @@ class DetailBookFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            val articleID = DetailArticleFragmentArgs.fromBundle(requireArguments()).idArticle
-            detailArticleViewModel = ViewModelProvider(this).get(DetailArticleViewModel::class.java)
-            detailArticleViewModel.fetch(articleID)
+            val bookID = DetailBookFragmentArgs.fromBundle(requireArguments()).bookID
+            detailBookViewModel = ViewModelProvider(this).get(DetailBookViewModel::class.java)
+            detailBookViewModel.fetch(bookID)
             observeViewModel()
         }
+
+
     }
 }

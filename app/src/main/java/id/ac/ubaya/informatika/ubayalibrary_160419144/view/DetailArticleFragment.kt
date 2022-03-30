@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
-import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadArticleImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.BookListViewModel
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
@@ -36,7 +35,7 @@ class DetailArticleFragment : Fragment() {
             txtDetailArticleUsername.setText(it.username)
             txtDetailArticleContent.setText(it.content)
             txtDetailArticleDate.setText(it.dob)
-            imgDetailArticle.loadArticleImage(it.imgUrl, progressImgDetailArticle)
+            imgDetailArticle.loadImage(it.imgUrl, progressImgDetailArticle, null, null)
         }
     }
 

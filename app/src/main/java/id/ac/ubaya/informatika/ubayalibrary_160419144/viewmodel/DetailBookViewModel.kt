@@ -14,6 +14,8 @@ import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Book
 
 class DetailBookViewModel(application: Application): AndroidViewModel(application) {
     val bookLD = MutableLiveData<Book>()
+    val bookLoadErrorLD = MutableLiveData<Boolean>()
+    val loadingLD = MutableLiveData<Boolean>()
     //TAG variable useful on volley request cancellation & delete inside refresh method
     val TAG = "volleyTag"
     private var queue: RequestQueue?= null
@@ -21,10 +23,14 @@ class DetailBookViewModel(application: Application): AndroidViewModel(applicatio
 
     fun fetch(bookID: String) {
         val id = bookID
+
+        loadingLD.value = true
+        bookLoadErrorLD.value = false
+
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-//        val url = "http://10.0.2.2/ubayalibrary/book.php?id=$id"
-        val url = "http://192.168.0.8/ubayalibrary/book.php?id=$id"
+        val url = "http://10.0.2.2/ubayalibrary/book.php?id=$id"
+//        val url = "http://192.168.0.8/ubayalibrary/book.php?id=$id"
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,
@@ -35,9 +41,12 @@ class DetailBookViewModel(application: Application): AndroidViewModel(applicatio
                 val result = Gson().fromJson<Book>(it, sType)
                 //Update the student LD which is being observed by Student List Fragment
                 bookLD.value = result
+                loadingLD.value = false
                 Log.d("showvolley", it)
             },
             {
+                bookLoadErrorLD.value = true
+                loadingLD.value = true
                 Log.d("showvolley", it.toString())
             }
         )

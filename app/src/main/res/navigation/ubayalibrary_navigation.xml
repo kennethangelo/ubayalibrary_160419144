@@ -68,7 +68,14 @@
         android:id="@+id/reviewFragment"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.ReviewFragment"
         android:label="Reviews"
-        tools:layout="@layout/fragment_review" />
+        tools:layout="@layout/fragment_review" >
+        <action
+            android:id="@+id/actionReviewToDetailProfileFragment"
+            app:destination="@id/detailProfileFragment" />
+        <argument
+            android:name="bookID"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.ProfileFragment"
@@ -96,8 +103,11 @@
         android:label="Detail Profile"
         tools:layout="@layout/fragment_detail_profile">
         <action
-            android:id="@+id/action_detailProfileFragment_to_detailBookListFragment"
+            android:id="@+id/actionDetailProfileToDetailBookListFragment"
             app:destination="@id/detailBookListFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemArticle"
@@ -114,7 +124,7 @@
         android:label="Detail Article"
         tools:layout="@layout/fragment_detail_article">
         <action
-            android:id="@+id/action_detailArticleFragment_to_detailProfileFragment"
+            android:id="@+id/actionDetailArticleToDetailProfileFragment"
             app:destination="@id/detailProfileFragment" />
         <argument
             android:name="idArticle"

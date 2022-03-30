@@ -42,7 +42,7 @@ class ArticleAdapter(val articleList:ArrayList<Article>): RecyclerView.Adapter<A
                 val action = ArticleFragmentDirections.actionArticleToDetailArticleFragment(article.id.toString())
                 Navigation.findNavController(it).navigate(action)
             }
-            imgArticle.loadImage(article.imgUrl, progBarArticleImg)
+            imgArticle.loadImage(article.imgUrl, progBarArticleImg, null, null)
         }
     }
 

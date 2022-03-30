@@ -40,10 +40,9 @@ data class Book(
     val desc:String?,
     @SerializedName("total_pages")
     val pages:Int?,
-//    val author:Author?,
-//    val category:Category?,
-//    val publisher: Publisher?,
-//    val reviews: Review?,
+    val author:Author?,
+    val category:Category?,
+    val publisher: Publisher?,
 )
 
 data class Category(
@@ -55,7 +54,7 @@ data class Category(
 
 data class Publisher(
     val id:String?,
-    val title:String?,
+    val name:String?,
     val bio:String?,
     @SerializedName("logoUrl")
     val imgUrl:String?,
@@ -63,16 +62,13 @@ data class Publisher(
 
 data class Review(
     val id:String?,
-    val title:String?,
-    val imgUrl:String?,
-    //To fix mismatch name with the JSON field name
-    @SerializedName("description")
-    val desc:String?,
-    @SerializedName("total_pages")
-    val pages:Int?,
-    val author:String?,
-    val genre:String?,
-    val publisher: String?
+    val book_id: String?,
+    val user: User?,
+    @SerializedName("reviewed_date")
+    val date: String?,
+    val stars: Double?,
+    @SerializedName("review_content")
+    val content: String?
 )
 
 data class User(

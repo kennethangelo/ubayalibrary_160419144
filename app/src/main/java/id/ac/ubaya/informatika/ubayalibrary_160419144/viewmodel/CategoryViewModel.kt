@@ -33,8 +33,8 @@ class CategoryViewModel (application: Application): AndroidViewModel(application
 
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
-//        val url = "http://10.0.2.2/ubayalibrary/category.php";
-        val url = "http://192.168.0.8/ubayalibrary/category.php";
+        val url = "http://10.0.2.2/ubayalibrary/category.php";
+//        val url = "http://192.168.0.8/ubayalibrary/category.php";
 
         val stringRequest = StringRequest(
             Request.Method.GET, url,

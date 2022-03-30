@@ -8,19 +8,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
-import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadArticleImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.AuthorViewModel
-import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
-import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.fragment_author.*
-import kotlinx.android.synthetic.main.fragment_detail_article.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class AuthorFragment : Fragment() {
     private lateinit var authorViewModel: AuthorViewModel
-    private val bookAdapter  = BookAdapter(arrayListOf())
+    private val bookAdapter  = AuthorBookAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +37,7 @@ class AuthorFragment : Fragment() {
             txtAuthorName.text = it.fullname
             txtAuthorBio.text = it.bio
             txtAuthorDOB.text = it.dob
-            imgAuthor.loadImage(it.imgUrl, pbAuthorImage)
+            imgAuthor.loadImage(it.imgUrl, pbAuthorImage, 300, 300)
         }
 
         authorViewModel.authorLoadErrorLD.observe(viewLifecycleOwner) {
@@ -92,8 +86,8 @@ class AuthorFragment : Fragment() {
             authorViewModel.refresh(authorID)
 
             val gm = GridLayoutManager(activity,2) // 2 = jumlah kolom
-            recView.layoutManager = gm
-            recView.adapter = bookAdapter
+            recViewAuthorBooks.layoutManager = gm
+            recViewAuthorBooks.adapter = bookAdapter
 
             observeViewModel()
         }
