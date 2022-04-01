@@ -30,10 +30,11 @@ class ReviewAdapter(val reviewList:ArrayList<Review>): RecyclerView.Adapter<Revi
             txtReviewName.text = review.user.name
             txtReviewContent.text= review.content
             txtReviewAdded.text = review.date
-
+            ratingReview.setIsIndicator(false)
+            ratingReview.numStars = review.stars!!.toInt()
             txtReviewUsername.setOnClickListener {
                 val action =
-                    ReviewFragmentDirections.actionReviewToDetailProfileFragment(review.id.toString())
+                    ReviewFragmentDirections.actionReviewToDetailProfileFragment(review.user.username.toString())
                 Navigation.findNavController(it).navigate(action)
             }
 

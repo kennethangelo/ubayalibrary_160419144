@@ -8,24 +8,22 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
-import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.ArticleViewModel
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.BookListViewModel
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.CategoryViewModel
-import kotlinx.android.synthetic.main.fragment_article.*
-import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.fragment_discover.*
 
-class SearchFragment : Fragment() {
+class DiscoverFragment : Fragment() {
     private lateinit var bookListViewModel: BookListViewModel
     private lateinit var categoryViewModel: CategoryViewModel
-    private val bookListAdapter  = SearchBookListAdapter(arrayListOf())
-    private val categoryAdapter  = SearchCategoryAdapter(arrayListOf())
+    private val bookListAdapter  = DiscoverBookListAdapter(arrayListOf())
+    private val categoryAdapter  = DiscoverCategoryAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_discover, container, false)
     }
 
     //Set actions for observer about how to handle the emitted data

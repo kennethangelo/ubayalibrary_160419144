@@ -56,12 +56,12 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/itemSearch"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.SearchFragment"
-        android:label="Search"
-        tools:layout="@layout/fragment_search">
+        android:id="@+id/itemDiscover"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DiscoverFragment"
+        android:label="Discover"
+        tools:layout="@layout/fragment_discover">
         <action
-            android:id="@+id/actionSearchToDetailBookListFragment"
+            android:id="@+id/actionDiscoverToDetailBookListFragment"
             app:destination="@id/detailBookListFragment" />
     </fragment>
     <fragment
@@ -96,6 +96,9 @@
         <action
             android:id="@+id/action_friendsFragment_to_detailProfileFragment"
             app:destination="@id/detailProfileFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailProfileFragment"
@@ -108,6 +111,9 @@
         <argument
             android:name="username"
             app:argType="string" />
+        <action
+            android:id="@+id/actionDetailProfileToFriendsFragment"
+            app:destination="@id/friendsFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemArticle"

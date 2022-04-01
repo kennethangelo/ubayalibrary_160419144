@@ -29,6 +29,7 @@ data class Booklist(
     val username:String?,
     @SerializedName("date_added")
     val date:String?,
+    val desc:String?
 )
 
 data class Book(
