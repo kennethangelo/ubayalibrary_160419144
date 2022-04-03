@@ -103,8 +103,7 @@
     <fragment
         android:id="@+id/detailProfileFragment"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DetailProfileFragment"
-        android:label="Detail Profile"
-        tools:layout="@layout/fragment_detail_profile">
+        android:label="Detail Profile">
         <action
             android:id="@+id/actionDetailProfileToDetailBookListFragment"
             app:destination="@id/detailBookListFragment" />

@@ -27,10 +27,11 @@
 
             <TextView
                 android:id="@+id/txtBooklistTitle"
+                style="@style/heading1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="This is the title"
                 android:textSize="16sp"
@@ -49,6 +50,7 @@
 
             <TextView
                 android:id="@+id/txtMadeByUsername"
+                style="@style/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

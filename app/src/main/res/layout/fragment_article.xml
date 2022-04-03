@@ -31,8 +31,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txtArticleError"
+                style="@style/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Error while loading data"
@@ -46,6 +48,7 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:indeterminateTint="@color/dark_beige"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

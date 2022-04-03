@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 
 class DetailProfileFragment : Fragment() {
     private lateinit var viewModel: ProfileViewModel
-    private val booklistAdapter  = ProfileBooklistAdapter(arrayListOf())
+    private val booklistAdapter  = DetailProfileBooklistAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

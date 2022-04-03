@@ -29,8 +29,9 @@ data class Booklist(
     val username:String?,
     @SerializedName("date_added")
     val date:String?,
-    val desc:String?
-)
+    val desc:String?,
+    val headerImg:String?,
+    )
 
 data class Book(
     val id:String?,
@@ -51,6 +52,7 @@ data class Category(
     val name:String?,
     @SerializedName("description")
     val desc:String?,
+    val headerImg:String?,
 )
 
 data class Publisher(
@@ -84,5 +86,6 @@ data class User(
     val bio:String?,
     @SerializedName("photo_url")
     val imgUrl:String?,
-)
+    val headerImg:String?,
+    )
 

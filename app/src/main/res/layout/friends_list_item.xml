@@ -39,6 +39,7 @@
 
             <TextView
                 android:id="@+id/txtFriendUsername"
+                style="@style/heading1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
@@ -51,6 +52,7 @@
 
             <TextView
                 android:id="@+id/txtFriendName"
+                style="@style/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
@@ -65,6 +67,7 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:indeterminateTint="@color/dark_beige"
                 app:layout_constraintBottom_toBottomOf="@+id/imgFriend"
                 app:layout_constraintEnd_toEndOf="@+id/imgFriend"
                 app:layout_constraintStart_toStartOf="@+id/imgFriend"

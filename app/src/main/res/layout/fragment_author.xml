@@ -13,6 +13,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminateTint="@color/dark_beige"
         app:layout_constraintBottom_toBottomOf="@+id/consLayoutAuthor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +21,7 @@
 
     <TextView
         android:id="@+id/txtAuthorError"
+        style="@style/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Error while loading data."
@@ -33,20 +35,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="98dp">
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <TextView
             android:id="@+id/txtAuthorBio"
+            style="@style/body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:text="This is my bio."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAuthorTotalRating" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAuthorDOB" />
 
         <View
             android:id="@+id/view"
@@ -65,6 +68,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:indeterminateTint="@color/dark_beige"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +76,7 @@
 
         <TextView
             android:id="@+id/txtAuthorBookError"
+            style="@style/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Error while loading data."
@@ -79,16 +84,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtAuthorTotalBooks" />
-
-        <TextView
-            android:id="@+id/txtAuthorTotalReviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="7dp"
-            android:text="0 review(s)"
-            app:layout_constraintStart_toEndOf="@+id/txtAuthorTotalRating"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <ImageView
             android:id="@+id/imgAuthor"
@@ -105,6 +100,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:indeterminateTint="@color/dark_beige"
             app:layout_constraintBottom_toBottomOf="@+id/imgAuthor"
             app:layout_constraintEnd_toEndOf="@+id/imgAuthor"
             app:layout_constraintStart_toStartOf="@+id/imgAuthor"
@@ -122,21 +118,12 @@
             app:srcCompat="@drawable/ic_baseline_cake_24" />
 
         <TextView
-            android:id="@+id/txtAuthorRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:text="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgAuthor"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-        <TextView
             android:id="@+id/txtAuthorName"
+            style="@style/heading1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="92dp"
             android:text="Amanda Doe"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -144,17 +131,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="13dp"
-            android:text="star(s)"
-            app:layout_constraintStart_toEndOf="@+id/txtAuthorRating"
-            app:layout_constraintTop_toBottomOf="@+id/txtAuthorDOB" />
-
-        <TextView
             android:id="@+id/txtAuthorDOB"
+            style="@style/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -164,23 +142,14 @@
             app:layout_constraintTop_toBottomOf="@+id/txtAuthorName" />
 
         <TextView
-            android:id="@+id/txtAuthorTotalRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="0 rating(s)"
-            app:layout_constraintStart_toEndOf="@+id/imgAuthor"
-            app:layout_constraintTop_toBottomOf="@+id/txtAuthorRating" />
-
-        <TextView
             android:id="@+id/txtAuthorTotalBooks"
+            style="@style/subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="16dp"
-            android:text="0 BOOKS BY AUTHOR"
+            android:text="BOOKS BY AUTHOR"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -192,10 +161,13 @@
             android:id="@+id/recViewAuthorBooks"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAuthorTotalBooks" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAuthorTotalBooks"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,7 @@
 
             <TextView
                 android:id="@+id/txtDetailArticleTitle"
+                style="@style/heading1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -50,6 +51,7 @@
 
             <TextView
                 android:id="@+id/txtDetailArticleDate"
+                style="@style/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -80,6 +82,7 @@
 
             <TextView
                 android:id="@+id/txtDetailArticleUsername"
+                style="@style/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -90,6 +93,7 @@
 
             <TextView
                 android:id="@+id/txtDetailArticleContent"
+                style="@style/body"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

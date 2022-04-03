@@ -46,6 +46,7 @@
 
             <TextView
                 android:id="@+id/txtTitle"
+                style="@style/heading1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -58,6 +59,7 @@
 
             <TextView
                 android:id="@+id/txtAuthor"
+                style="@style/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

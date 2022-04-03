@@ -31,7 +31,7 @@ class ReviewAdapter(val reviewList:ArrayList<Review>): RecyclerView.Adapter<Revi
             txtReviewContent.text= review.content
             txtReviewAdded.text = review.date
             ratingReview.setIsIndicator(false)
-            ratingReview.numStars = review.stars!!.toInt()
+            ratingReview.rating = review.stars!!.toFloat()
             txtReviewUsername.setOnClickListener {
                 val action =
                     ReviewFragmentDirections.actionReviewToDetailProfileFragment(review.user.username.toString())
