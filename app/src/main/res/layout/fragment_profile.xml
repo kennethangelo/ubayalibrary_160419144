@@ -24,9 +24,9 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/dark_beige"
+        android:indeterminateTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/consProfile"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,18 +34,32 @@
         android:id="@+id/consProfile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-195dp"
-        tools:layout_editor_absoluteY="-58dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgProfileBackground"
-            android:layout_width="409dp"
-            android:layout_height="141dp"
+            android:layout_width="0dp"
+            android:layout_height="134dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
+
+        <ProgressBar
+            android:id="@+id/pbProfileBG"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/beige"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfileBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgProfileBackground" />
 
         <ImageView
             android:id="@+id/imgProfilePicture"
@@ -75,7 +89,7 @@
         <TextView
             android:id="@+id/txtProfileDOB"
             style="@style/subtitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="14dp"
@@ -85,9 +99,9 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="68dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_baseline_cake_24"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,11 +110,12 @@
         <TextView
             android:id="@+id/txtProfileJoinedAt"
             style="@style/subtitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="14dp"
             android:text="01 January 1970"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toBottomOf="@+id/txtProfileDesc" />
 
@@ -120,14 +135,25 @@
 
         <TextView
             android:id="@+id/txtProfileUsername"
+            style="@style/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtProfileName"
-            style="@style/subtitle" />
+            app:layout_constraintTop_toBottomOf="@+id/txtProfileName" />
+
+        <Button
+            android:id="@+id/btnProfileFriends"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="150dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="7dp"
+            android:text="See Friends"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -166,7 +192,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/dark_beige"
+            android:indeterminateTint="@color/beige"
             app:layout_constraintBottom_toBottomOf="@+id/recProfileBooklist"
             app:layout_constraintEnd_toEndOf="@+id/recProfileBooklist"
             app:layout_constraintStart_toStartOf="parent"
@@ -175,7 +201,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recProfileBooklist"
             android:layout_width="0dp"
-            android:layout_height="260dp"
+            android:layout_height="0dp"
             android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -183,23 +209,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <Button
-            android:id="@+id/btnProfileFriends"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="150dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="7dp"
-            android:text="See Friends"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
-
         <ProgressBar
             android:id="@+id/pbProfileImg"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/dark_beige"
+            android:indeterminateTint="@color/beige"
             app:layout_constraintBottom_toBottomOf="@+id/imgProfilePicture"
             app:layout_constraintEnd_toEndOf="@+id/imgProfilePicture"
             app:layout_constraintStart_toStartOf="@+id/imgProfilePicture"

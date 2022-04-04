@@ -48,6 +48,7 @@ class ProfileFragment : Fragment() {
             txtProfileDesc.text = it.bio
             txtProfileDOB.text = it.dob
             txtProfileJoinedAt.text = it.joinDate
+            imgProfileBackground.loadImage(it.headerImg, pbProfileBG, null, null)
             btnProfileFriends.setOnClickListener {
                 val action =
                     ProfileFragmentDirections.actionProfileFragmentToFriendsFragment(user.username.toString())

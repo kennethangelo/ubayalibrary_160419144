@@ -50,7 +50,7 @@ class DetailBookFragment : Fragment() {
             }
         }
 
-        detailBookViewModel.loadingLD.observe(viewLifecycleOwner) {
+        detailBookViewModel.bookLoadErrorLD.observe(viewLifecycleOwner) {
             if (it == true) {
                 txtDetailBookError.visibility = View.VISIBLE
             } else {

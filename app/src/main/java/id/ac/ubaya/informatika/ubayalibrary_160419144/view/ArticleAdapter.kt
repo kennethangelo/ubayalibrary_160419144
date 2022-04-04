@@ -30,12 +30,9 @@ class ArticleAdapter(val articleList:ArrayList<Article>): RecyclerView.Adapter<A
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = articleList[position]
         with(holder.view){
-            if(article.title.toString().length > 15)
-                txtArticleTitle.text = "${article.title.toString().substring(0,15)}..."
-            else
-                txtArticleTitle.text = article.title.toString()
-            if(article.content.toString().length > 20)
-                txtArticleBriefDesc.text = "${article.content.toString().substring(0,17)}..."
+            txtArticleTitle.text = article.title.toString()
+            if(article.content.toString().length > 60)
+                txtArticleBriefDesc.text = "${article.content.toString().substring(0,57)}..."
             else
                 txtArticleBriefDesc.text = article.content.toString()
             btnArticleDetail.setOnClickListener {

@@ -15,8 +15,7 @@ data class Author(
 data class Article(
     val id:String?,
     val title:String?,
-    @SerializedName("date_added")
-    val dob:String?,
+    val date_added:String?,
     val content:String?,
     val username:String?,
     @SerializedName("contentImg")
@@ -30,7 +29,6 @@ data class Booklist(
     @SerializedName("date_added")
     val date:String?,
     val desc:String?,
-    val headerImg:String?,
     )
 
 data class Book(
@@ -52,7 +50,6 @@ data class Category(
     val name:String?,
     @SerializedName("description")
     val desc:String?,
-    val headerImg:String?,
 )
 
 data class Publisher(

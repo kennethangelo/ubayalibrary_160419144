@@ -29,8 +29,8 @@ class BookAdapter(val bookList:ArrayList<Book>): RecyclerView.Adapter<BookAdapte
         val book = bookList[position]
         with(holder.view){
             Log.d("book", book.title.toString())
-            if(book.title.toString().length > 13)
-                txtTitle.text = "${book.title.toString().substring(0,13)}..."
+            if(book.title.toString().length > 15)
+                txtTitle.text = "${book.title.toString().substring(0,15)}..."
             else
                 txtTitle.text = book.title.toString()
             txtAuthor.text = book.author!!.fullname.toString()

@@ -14,13 +14,21 @@ import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Article
 
 class DetailArticleViewModel(application: Application): AndroidViewModel(application) {
     val articleLD = MutableLiveData<Article>()
-
+    //Live data that "emit" error status (boolean)
+    val articleLoadErrorLD = MutableLiveData<Boolean>()
+    //Live data that "emit" data loading status (boolean)
+    //MutableLiveData -> type of updateable LiveData
+    val loadingLD = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
     private var queue: RequestQueue?= null
 
 
     fun fetch(articleID: String) {
         val id = articleID
+
+        articleLoadErrorLD.value = false
+        loadingLD.value = true
+
         //Initialize volley
         queue = Volley.newRequestQueue(getApplication());
         val url = "http://10.0.2.2/ubayalibrary/article.php?id=$id"
@@ -36,9 +44,12 @@ class DetailArticleViewModel(application: Application): AndroidViewModel(applica
                 val result = Gson().fromJson<Article>(it, sType)
                 //Update the student LD which is being observed by Student List Fragment
                 articleLD.value = result
+                loadingLD.value = false
                 Log.d("showvolley", it)
             },
             {
+                articleLoadErrorLD.value = true
+                loadingLD.value = true
                 Log.d("showvolley", it.toString())
             }
         )

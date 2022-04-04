@@ -39,14 +39,14 @@ class DetailBookListFragment : Fragment() {
             viewModel.categoryLD.observe(viewLifecycleOwner) {
                 txtDetailListName.text = it.name
                 txtDetailListDesc.text = it.desc
-                imgDetailList.loadImage("https://www.ymcatriangle.org/sites/default/files/2019-02/programheader_bluegradient_0.jpg", pbDetailListBG, null, null)
+                imgDetailList.loadImage("https://static.vecteezy.com/system/resources/previews/004/493/331/large_2x/brown-and-black-gradient-background-free-photo.jpg", pbDetailListBG, null, null)
             }
 
         } else if(type.equals("Booklist")){
             viewModel.booklistInfoLD.observe(viewLifecycleOwner) {
                 txtDetailListName.text = it.name
                 txtDetailListDesc.text = it.desc
-                imgDetailList.loadImage("https://www.ymcatriangle.org/sites/default/files/2019-02/programheader_bluegradient_0.jpg", pbDetailListBG, null, null)
+                imgDetailList.loadImage("https://static.vecteezy.com/system/resources/previews/004/493/331/large_2x/brown-and-black-gradient-background-free-photo.jpg", pbDetailListBG, null, null)
             }
         }
 

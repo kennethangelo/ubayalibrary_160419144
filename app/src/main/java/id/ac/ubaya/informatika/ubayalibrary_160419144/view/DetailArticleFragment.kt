@@ -12,6 +12,11 @@ import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.BookListViewModel
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
 import kotlinx.android.synthetic.main.fragment_detail_article.*
+import kotlinx.android.synthetic.main.fragment_profile.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class DetailArticleFragment : Fragment() {
@@ -34,8 +39,26 @@ class DetailArticleFragment : Fragment() {
             txtDetailArticleTitle.setText(it.title)
             txtDetailArticleUsername.setText(it.username)
             txtDetailArticleContent.setText(it.content)
-            txtDetailArticleDate.setText(it.dob)
+            txtDetailArticleDate.setText(it.date_added)
             imgDetailArticle.loadImage(it.imgUrl, progressImgDetailArticle, null, null)
+        }
+
+        detailArticleViewModel.articleLoadErrorLD.observe(viewLifecycleOwner) {
+            if (it == true) {
+                txtDetailArticleError.visibility = View.VISIBLE
+            } else {
+                txtDetailArticleError.visibility = View.GONE
+            }
+        }
+
+        detailArticleViewModel.loadingLD.observe(viewLifecycleOwner) {
+            if (it == true) {
+                scrollDetail.visibility = View.GONE
+                pbDetailArticle.visibility = View.VISIBLE
+            } else {
+                scrollDetail.visibility = View.VISIBLE
+                pbDetailArticle.visibility = View.GONE
+            }
         }
     }
 
