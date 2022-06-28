@@ -18,88 +18,30 @@
         android:visibility="visible"
         tools:context=".view.ProfileFragment">
 
-        <TextView
-            android:id="@+id/txtProfileError"
-            style="@style/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Error in loading data."
-            app:layout_constraintBottom_toBottomOf="@+id/consProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/consProfile"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/pbProfile"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateTint="@color/beige"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/consProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imgProfileBackground"
-                android:layout_width="0dp"
-                android:layout_height="134dp"
-                android:imageUrl="@{user.headerImg}"
-                android:progressBar="@{pbProfileBG}"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/backgrounds/scenic"
-                />
-
-            <ProgressBar
-                android:id="@+id/pbProfileBG"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminateTint="@color/beige"
-                app:layout_constraintBottom_toBottomOf="@+id/imgProfileBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgProfileBackground" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <ImageView
                 android:id="@+id/imgProfilePicture"
                 android:layout_width="104dp"
                 android:layout_height="103dp"
                 android:layout_marginTop="68dp"
+                android:imageUrl="@{user.imgUrl}"
+                android:progressBar="@{pbProfileImg}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"
-                android:imageUrl="@{user.imgUrl}"
-                android:progressBar="@{pbProfileImg}" />
-
-            <TextView
-                android:id="@+id/textView5"
-                style="@style/subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="My Articles"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtProfileJoinedAt" />
+                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/txtProfileDOB"
@@ -120,8 +62,7 @@
                 android:layout_marginTop="12dp"
                 android:src="@drawable/ic_baseline_cake_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtProfileDesc"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/txtProfileDesc" />
 
             <TextView
                 android:id="@+id/txtProfileJoinedAt"
@@ -180,39 +121,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtProfileUsername" />
-
-            <TextView
-                android:id="@+id/txtProfileBooklistError"
-                style="@style/subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="There's no data in here."
-                app:layout_constraintBottom_toBottomOf="@+id/recProfileArticle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-            <ProgressBar
-                android:id="@+id/pbProfileBooklist"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminateTint="@color/beige"
-                app:layout_constraintBottom_toBottomOf="@+id/recProfileArticle"
-                app:layout_constraintEnd_toEndOf="@+id/recProfileArticle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recProfileArticle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="60dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <ProgressBar
                 android:id="@+id/pbProfileImg"

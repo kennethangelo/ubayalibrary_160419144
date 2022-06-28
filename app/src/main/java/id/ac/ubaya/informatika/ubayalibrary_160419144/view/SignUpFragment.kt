@@ -13,19 +13,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
 import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentAddArticleBinding
-import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentAddArticleBindingImpl
-import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Article
-import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Global
-import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.ArticleViewModel
+import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentSignUpBinding
+import id.ac.ubaya.informatika.ubayalibrary_160419144.model.User
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
+import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.ProfileViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
-import java.util.concurrent.TimeUnit
 
-class AddArticleFragment : Fragment(), AddArticleClick {
-    private lateinit var viewModel: DetailArticleViewModel
-    private lateinit var dataBinding: FragmentAddArticleBinding
+class SignUpFragment : Fragment(), CreateUserClick, BackLoginClick {
+    private lateinit var viewModel: ProfileViewModel
+    private lateinit var dataBinding: FragmentSignUpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,27 +30,32 @@ class AddArticleFragment : Fragment(), AddArticleClick {
     ): View? {
         // Inflate the layout for this fragment
         dataBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_add_article, container, false
+            inflater, R.layout.fragment_sign_up, container, false
         )
         return dataBinding.root
         // return inflater.inflate(R.layout.fragment_create_to_do, container, false)
     }
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val now = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
         val formatted = now.format(formatter)
-        dataBinding.article = Article("",formatted,"", Global.username,"")
-        viewModel = ViewModelProvider(this).get(DetailArticleViewModel::class.java)
-        dataBinding.addArticlelistener = this
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        dataBinding.user = User("","","","",formatted,"","")
+        dataBinding.loginListener = this
+        dataBinding.createListener = this
     }
 
-    override fun onAddArticleClick(v: View) {
-        dataBinding.article?.let{
+    override fun onLoginClick(v: View) {
+        val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onCreateNewUser(v: View) {
+        dataBinding.user?.let{
             val list = listOf(it)
-            viewModel.addArticle(list)
+            viewModel.register(list)
             Toast.makeText(v.context, "Data added", Toast.LENGTH_LONG).show()
 //            val myWorkRequest = OneTimeWorkRequestBuilder<ToDoWorker>()
 //                //Notif will show 30 seconds later after work queued

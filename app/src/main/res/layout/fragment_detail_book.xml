@@ -17,27 +17,16 @@
         android:layout_height="match_parent"
         tools:context=".view.DetailBookFragment">
 
-        <ProgressBar
-            android:id="@+id/pbDetailBook"
-            style="?android:attr/progressBarStyle"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabEditBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/beige"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="80dp"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_edit_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtDetailBookError"
-            style="@style/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Error while loading data."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/scrollDetailBook"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollDetailBook"
@@ -91,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Category"
+                    android:text="@{book.category}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgDetailBookTitle" />
@@ -217,18 +206,8 @@
                     app:layout_constraintStart_toStartOf="@+id/imgDetailBookTitle"
                     app:layout_constraintTop_toTopOf="@+id/imgDetailBookTitle" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabEditBook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

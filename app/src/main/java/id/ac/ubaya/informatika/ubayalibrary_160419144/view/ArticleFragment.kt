@@ -1,10 +1,12 @@
 package id.ac.ubaya.informatika.ubayalibrary_160419144.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,26 +35,27 @@ class ArticleFragment : Fragment() {
         //Everytime observer changes state -> observable emit the data
         //Used to "observe" Articles data
         viewModel.articlesLD.observe(viewLifecycleOwner) {
+            Log.d("itArticle", it.toString())
             articleAdapter.updateArticleList(it)
         }
 
-        viewModel.articleLoadErrorLD.observe(viewLifecycleOwner) {
-            if (it == true) {
-                txtArticleError.visibility = View.VISIBLE
-            } else {
-                txtArticleError.visibility = View.GONE
-            }
-        }
-
-        viewModel.loadingLD.observe(viewLifecycleOwner) {
-            if (it == true) {
-                recViewArticle.visibility = View.GONE
-                progressArticle.visibility = View.VISIBLE
-            } else {
-                recViewArticle.visibility = View.VISIBLE
-                progressArticle.visibility = View.GONE
-            }
-        }
+//        viewModel.articleLoadErrorLD.observe(viewLifecycleOwner) {
+//            if (it == true) {
+//                txtArticleError.visibility = View.VISIBLE
+//            } else {
+//                txtArticleError.visibility = View.GONE
+//            }
+//        }
+//
+//        viewModel.loadingLD.observe(viewLifecycleOwner) {
+//            if (it == true) {
+//                recViewArticle.visibility = View.GONE
+//                progressArticle.visibility = View.VISIBLE
+//            } else {
+//                recViewArticle.visibility = View.VISIBLE
+//                progressArticle.visibility = View.GONE
+//            }
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,16 +73,5 @@ class ArticleFragment : Fragment() {
         }
 
         observeViewModel()
-
-        //Triggered when user do vertical swipe on the layout
-        refreshArticleLayout.setOnRefreshListener {
-            recViewArticle.visibility = View.GONE
-            txtArticleError.visibility = View.GONE
-            progressArticle.visibility = View.VISIBLE
-            //Loads up the viewmodel to retrieve latest data from endpoint API
-            viewModel.refresh()
-            //Hide the loading progress icon
-            refreshArticleLayout.isRefreshing = false
-        }
     }
 }

@@ -36,21 +36,7 @@ class BookAdapter(val bookList:ArrayList<Book>, val adapterOnClick: (Book) -> Un
         //Important to instanstiate the listener
         //Refer to the adapter obj => alteady implement the interface for itself
         holder.view.detailBookListener = this
-//        Log.d("book", bookList.toString())
-//        val book = bookList[position]
-//        with(holder.view){
-//            Log.d("book", book.title.toString())
-//            if(book.title.toString().length > 15)
-//                txtTitle.text = "${book.title.toString().substring(0,15)}..."
-//            else
-//                txtTitle.text = book.title.toString()
-//            txtAuthor.text = book.author!!.fullname.toString()
-//            btnDetail.setOnClickListener {
-//                val action = HomeFragmentDirections.actionHomeToDetailFragment(book.id.toString())
-//                Navigation.findNavController(it).navigate(action)
-//            }
-//            imgBook.loadImage(book.imgUrl, progBarBookImg, 600, 500)
-//        }
+        holder.view.deleteBookListener = this
     }
 
     override fun getItemCount() = bookList.size

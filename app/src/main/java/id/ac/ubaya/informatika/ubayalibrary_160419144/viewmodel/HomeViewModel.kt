@@ -32,10 +32,12 @@ class HomeViewModel(application: Application): AndroidViewModel(application), Co
     //Load data from server/local and prepare livedata objects (ready to be observed)
     fun fetch() {
         loadingLD.value = true
-        bookLoadErrorLD.value = false
+        bookLoadErrorLD.value = true
         launch{
             val db = buildDB(getApplication())
             booksLD.value = db.bookDao().selectAllBooks()
+            loadingLD.value = false
+            bookLoadErrorLD.value = false
         }
     }
 

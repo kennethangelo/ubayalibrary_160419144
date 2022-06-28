@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
 import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentDetailArticleBinding
+import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentEditBookBinding
 import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
 import kotlinx.android.synthetic.main.fragment_detail_article.*
@@ -23,7 +25,8 @@ class DetailArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_article, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentDetailArticleBinding>(inflater, R.layout.fragment_detail_article, container, false)
+        return dataBinding.root
     }
     //Set actions for observer about how to handle the emitted data
     fun observeViewModel() {

@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
@@ -68,10 +70,10 @@ fun createNotificationChannel(context: Context, importance: Int, showBadge: Bool
 
 val DB_NAME = "librarydb"
 
+
 fun buildDB(context: Context):LibraryDatabase{
     val db = Room.databaseBuilder(
         context, LibraryDatabase::class.java, DB_NAME)
-        .addMigrations()
         .build()
     return db
 }

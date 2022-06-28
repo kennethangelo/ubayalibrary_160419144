@@ -2,6 +2,7 @@ package id.ac.ubaya.informatika.ubayalibrary_160419144.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.NavController
@@ -50,6 +51,16 @@ class MainActivity : AppCompatActivity() {
         //Menghubungkan antara bottom nav dengan navcontroller
         NavigationUI.setupWithNavController(navView, navController)
         bottomNav.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, target, _ ->
+            if(target.id == R.id.loginFragment || target.id == R.id.signUpFragment){
+                bottomNav.visibility = View.GONE
+                navView.visibility = View.GONE
+            } else {
+                bottomNav.visibility = View.VISIBLE
+                navView.visibility = View.VISIBLE
+            }
+        }
 
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false, getString(R.string.app_name), "App notification channel.")
     }

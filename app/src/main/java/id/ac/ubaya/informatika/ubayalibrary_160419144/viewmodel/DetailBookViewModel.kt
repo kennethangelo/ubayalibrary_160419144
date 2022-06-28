@@ -40,6 +40,7 @@ class DetailBookViewModel(application: Application): AndroidViewModel(applicatio
         launch{
             val db = buildDB(getApplication())
             bookLD.value = db.bookDao().selectBook(uuid)
+            Log.d("bookLD", bookLD.value.toString())
         }
     }
 

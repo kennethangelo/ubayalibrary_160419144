@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
+import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Global.isLogin
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -34,51 +35,47 @@ class HomeFragment : Fragment() {
             homeAdapter.updateBookList(it)
         }
 
-        viewModel.bookLoadErrorLD.observe(viewLifecycleOwner) {
-            if (it == true) {
-                txtError.visibility = View.VISIBLE
-            } else {
-                txtError.visibility = View.GONE
-            }
-        }
-
-        viewModel.loadingLD.observe(viewLifecycleOwner) {
-            if (it == true) {
-                recView.visibility = View.GONE
-                progressHome.visibility = View.VISIBLE
-            } else {
-                recView.visibility = View.VISIBLE
-                progressHome.visibility = View.GONE
-            }
-        }
+//        viewModel.bookLoadErrorLD.observe(viewLifecycleOwner) {
+//            if (it == true) {
+//                txtError.visibility = View.VISIBLE
+//            } else {
+//                txtError.visibility = View.GONE
+//            }
+//        }
+//
+//        viewModel.loadingLD.observe(viewLifecycleOwner) {
+//            if (it == true) {
+//                recView.visibility = View.GONE
+//                progressHome.visibility = View.VISIBLE
+//            } else {
+//                recView.visibility = View.VISIBLE
+//                progressHome.visibility = View.GONE
+//            }
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        viewModel.fetch()
-
-        val gm = GridLayoutManager(activity, 2) // 2 = jumlah kolom
-        recView.layoutManager = gm
-        recView.adapter = homeAdapter
-
-        fabAddBook.setOnClickListener {
-            val action = HomeFragmentDirections.actionItemHomeToAddBookFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        observeViewModel()
-
-//        Triggered when user do vertical swipe on the layout
-        refreshHomeLayout.setOnRefreshListener {
-            recView.visibility = View.GONE
-            txtError.visibility = View.GONE
-            progressHome.visibility = View.VISIBLE
-            //Loads up the viewmodel to retrieve latest data from endpoint API
+        if(isLogin == false){
+            val action = HomeFragmentDirections.actionItemHomeToLoginFragment()
+            Navigation.findNavController(view).navigate(action)
+        } else {
+            viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
             viewModel.fetch()
-            //Hide the loading progress icon
-            refreshHomeLayout.isRefreshing = false
+
+            val gm = GridLayoutManager(activity, 2) // 2 = jumlah kolom
+            recView.layoutManager = gm
+            recView.adapter = homeAdapter
+
+            fabAddBook.setOnClickListener {
+                val action = HomeFragmentDirections.actionItemHomeToAddBookFragment()
+                Navigation.findNavController(it).navigate(action)
+            }
+
+            observeViewModel()
         }
+
+
     }
 }

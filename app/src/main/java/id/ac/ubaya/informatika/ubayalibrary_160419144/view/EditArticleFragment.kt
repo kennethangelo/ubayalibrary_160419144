@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
 import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentEditArticleBinding
+import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentEditBookBinding
 import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Article
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.DetailArticleViewModel
 
@@ -22,7 +25,8 @@ class EditArticleFragment : Fragment(), EditArticleClick {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_article, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentEditArticleBinding>(inflater, R.layout.fragment_edit_article, container, false)
+        return dataBinding.root
     }
 
     fun observeViewModel(){
@@ -37,6 +41,7 @@ class EditArticleFragment : Fragment(), EditArticleClick {
         val uuid = EditArticleFragmentArgs.fromBundle(requireArguments()).articleID
         //Fetch from LiveModel with UUID supplied as parameter
         viewModel.fetch(uuid)
+        dataBinding.editArticlelistener = this
         //Observe the LiveData
         observeViewModel()
     }
@@ -44,5 +49,7 @@ class EditArticleFragment : Fragment(), EditArticleClick {
     override fun onEditArticleClick(v: View, a: Article) {
         viewModel.update(a.title, a.content, a.imgUrl, a.uuid)
         Toast.makeText(v.context, "Todo updated", Toast.LENGTH_SHORT).show()
+        val action = EditArticleFragmentDirections.actionEditArticleFragmentToItemArticle()
+        Navigation.findNavController(v).navigate(action)
     }
 }

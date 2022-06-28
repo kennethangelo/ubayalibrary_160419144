@@ -28,13 +28,13 @@ class ArticleViewModel(application: Application): AndroidViewModel(application),
         get() = job + Dispatchers.Main
     //Dispatches tells you on which thread should I run this block of code (Main, IO, Default)
 
-    //Load data from server/local and prepare livedata objects (ready to be observed)
     fun refresh() {
         loadingLD.value = true
         articleLoadErrorLD.value = false
         launch{
             val db = buildDB(getApplication())
             articlesLD.value = db.articleDao().selectAllArticle()
+            Log.d("listOfArticles", articlesLD.value.toString())
         }
     }
 

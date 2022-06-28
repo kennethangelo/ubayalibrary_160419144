@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
+import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentEditBookBinding
 import id.ac.ubaya.informatika.ubayalibrary_160419144.databinding.FragmentProfileBinding
+import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Global
 import id.ac.ubaya.informatika.ubayalibrary_160419144.util.loadImage
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.ArticleViewModel
 import id.ac.ubaya.informatika.ubayalibrary_160419144.viewmodel.ProfileViewModel
@@ -26,7 +29,8 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentProfileBinding>(inflater, R.layout.fragment_profile, container, false)
+        return dataBinding.root
     }
 
     //Set actions for observer about how to handle the emitted data
@@ -42,53 +46,13 @@ class ProfileFragment : Fragment() {
         viewModel.profileLD.observe(viewLifecycleOwner) {
             dataBinding.user = it
         }
-
-//        viewModel.profileLoadErrorLD.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                txtProfileError.visibility = View.VISIBLE
-//            } else {
-//                txtProfileError.visibility = View.GONE
-//            }
-//        }
-//
-//        viewModel.booklistLoadErrorLD.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                txtProfileBooklistError.visibility = View.VISIBLE
-//            } else {
-//                txtProfileBooklistError.visibility = View.GONE
-//            }
-//        }
-//
-//        viewModel.loadingLD.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                consProfile.visibility = View.GONE
-//                pbProfile.visibility = View.VISIBLE
-//            } else {
-//                consProfile.visibility = View.VISIBLE
-//                pbProfile.visibility = View.GONE
-//            }
-//        }
-//
-//        viewModel.loadingBooklistLD.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                recProfileArticle.visibility = View.GONE
-//                pbProfileBooklist.visibility = View.VISIBLE
-//            } else {
-//                recProfileArticle.visibility = View.VISIBLE
-//                pbProfileBooklist.visibility = View.GONE
-//            }
-//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-        viewModel.fetch("kennethangelo")
-
-        val lm = LinearLayoutManager(context) // 2 = jumlah kolom
-        recProfileArticle.layoutManager = lm
-        recProfileArticle.adapter = articleAdapter
+        viewModel.fetch(Global.username)
 
         observeViewModel()
     }
