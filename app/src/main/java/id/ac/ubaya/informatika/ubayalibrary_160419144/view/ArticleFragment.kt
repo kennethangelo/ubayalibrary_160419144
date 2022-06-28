@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.ubayalibrary_160419144.R
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class ArticleFragment : Fragment() {
     private lateinit var viewModel: ArticleViewModel
-    private val articleAdapter  = ArticleAdapter(arrayListOf())
+    private val articleAdapter  = ArticleAdapter(arrayListOf(), {item->viewModel.delete(item)})
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,6 +63,11 @@ class ArticleFragment : Fragment() {
 
         recViewArticle.layoutManager = LinearLayoutManager(context)
         recViewArticle.adapter = articleAdapter
+
+        fabAddArticle.setOnClickListener {
+            val action = ArticleFragmentDirections.actionItemArticleToAddArticleFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
 
         observeViewModel()
 

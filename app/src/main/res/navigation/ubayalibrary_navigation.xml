@@ -12,69 +12,21 @@
         <action
             android:id="@+id/actionHomeToDetailFragment"
             app:destination="@id/detailBookFragment" />
+        <action
+            android:id="@+id/action_itemHome_to_addBookFragment"
+            app:destination="@id/addBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailBookFragment"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DetailBookFragment"
         android:label="Detail Book"
         tools:layout="@layout/fragment_detail_book">
-        <action
-            android:id="@+id/action_detailBookFragment_to_reviewFragment"
-            app:destination="@id/reviewFragment" />
-        <action
-            android:id="@+id/action_detailBookFragment_to_authorFragment"
-            app:destination="@id/authorFragment" />
         <argument
             android:name="bookID"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/authorFragment"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.AuthorFragment"
-        android:label="Author's Profile"
-        tools:layout="@layout/fragment_author">
+            app:argType="integer" />
         <action
-            android:id="@+id/action_authorFragment_to_detailBookFragment"
-            app:destination="@id/detailBookFragment" />
-        <argument
-            android:name="authorID"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailBookListFragment"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DetailBookListFragment"
-        android:label="Book List"
-        tools:layout="@layout/fragment_detail_book_list">
-        <action
-            android:id="@+id/action_detailBookListFragment_to_detailBookFragment"
-            app:destination="@id/detailBookFragment" />
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/itemDiscover"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DiscoverFragment"
-        android:label="Discover"
-        tools:layout="@layout/fragment_discover">
-        <action
-            android:id="@+id/actionDiscoverToDetailBookListFragment"
-            app:destination="@id/detailBookListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/reviewFragment"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.ReviewFragment"
-        android:label="Reviews"
-        tools:layout="@layout/fragment_review" >
-        <action
-            android:id="@+id/actionReviewToDetailProfileFragment"
-            app:destination="@id/detailProfileFragment" />
-        <argument
-            android:name="bookID"
-            app:argType="string" />
+            android:id="@+id/action_detailBookFragment_to_editBookFragment"
+            app:destination="@id/editBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemProfile"
@@ -82,37 +34,8 @@
         android:label="Your Profile"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_friendsFragment"
-            app:destination="@id/friendsFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_detailBookListFragment"
-            app:destination="@id/detailBookListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/friendsFragment"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.FriendsFragment"
-        android:label="Friends"
-        tools:layout="@layout/fragment_friends">
-        <action
-            android:id="@+id/action_friendsFragment_to_detailProfileFragment"
-            app:destination="@id/detailProfileFragment" />
-        <argument
-            android:name="username"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailProfileFragment"
-        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DetailProfileFragment"
-        android:label="Detail Profile">
-        <action
-            android:id="@+id/actionDetailProfileToDetailBookListFragment"
-            app:destination="@id/detailBookListFragment" />
-        <argument
-            android:name="username"
-            app:argType="string" />
-        <action
-            android:id="@+id/actionDetailProfileToFriendsFragment"
-            app:destination="@id/friendsFragment" />
+            android:id="@+id/action_itemProfile_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemArticle"
@@ -122,17 +45,47 @@
         <action
             android:id="@+id/actionArticleToDetailArticleFragment"
             app:destination="@id/detailArticleFragment" />
+        <action
+            android:id="@+id/action_itemArticle_to_addArticleFragment"
+            app:destination="@id/addArticleFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailArticleFragment"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.DetailArticleFragment"
         android:label="Detail Article"
         tools:layout="@layout/fragment_detail_article">
-        <action
-            android:id="@+id/actionDetailArticleToDetailProfileFragment"
-            app:destination="@id/detailProfileFragment" />
         <argument
             android:name="idArticle"
-            app:argType="string" />
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detailArticleFragment_to_editArticleFragment"
+            app:destination="@id/editArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editBookFragment"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.EditBookFragment"
+        android:label="fragment_edit_book"
+        tools:layout="@layout/fragment_edit_book" >
+        <argument
+            android:name="bookID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBookFragment"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.AddBookFragment"
+        android:label="fragment_add_book"
+        tools:layout="@layout/fragment_add_book" />
+    <fragment
+        android:id="@+id/addArticleFragment"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.AddArticleFragment"
+        android:label="AddArticleFragment" />
+    <fragment
+        android:id="@+id/editArticleFragment"
+        android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.EditArticleFragment"
+        android:label="fragment_edit_article"
+        tools:layout="@layout/fragment_edit_article" >
+        <argument
+            android:name="articleID"
+            app:argType="integer" />
     </fragment>
 </navigation>

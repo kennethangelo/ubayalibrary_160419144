@@ -4,61 +4,50 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Article
 import id.ac.ubaya.informatika.ubayalibrary_160419144.model.Book
+import id.ac.ubaya.informatika.ubayalibrary_160419144.util.buildDB
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class DetailBookViewModel(application: Application): AndroidViewModel(application) {
+class DetailBookViewModel(application: Application): AndroidViewModel(application), CoroutineScope{
     val bookLD = MutableLiveData<Book>()
     val bookLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
-    //TAG variable useful on volley request cancellation & delete inside refresh method
-    val TAG = "volleyTag"
-    private var queue: RequestQueue?= null
-//        }
 
-    fun fetch(bookID: String) {
-        val id = bookID
+    private var job = Job()
 
-        loadingLD.value = true
-        bookLoadErrorLD.value = false
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
+    //Dispatches tells you on which thread should I run this block of code (Main, IO, Default)
 
-        //Initialize volley
-        queue = Volley.newRequestQueue(getApplication());
-        val url = "http://10.0.2.2/ubayalibrary/book.php?id=$id"
-//        val url = "http://192.168.0.8/ubayalibrary/book.php?id=$id"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                //TypeToken -> retrieve the obj type of student
-                val sType = object: TypeToken<Book>() {}.type
-                //fromJson -> convert JSON string to list of student
-                val result = Gson().fromJson<Book>(it, sType)
-                //Update the student LD which is being observed by Student List Fragment
-                bookLD.value = result
-                loadingLD.value = false
-                Log.d("showvolley", it)
-            },
-            {
-                bookLoadErrorLD.value = true
-                loadingLD.value = true
-                Log.d("showvolley", it.toString())
-            }
-        )
-
-        //Start the volley queue request and set the TAG
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
+    fun addBook(list: List<Book>){
+        launch{
+            val db = buildDB(getApplication())
+//            *list => convert individual element of list into its individual obj (Todo)
+//            and set it as separated param
+            db.bookDao().insertAllBook(*list.toTypedArray())
+        }
     }
 
-    //To clean up code (volley resource) to prevent memory leak problems.
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
+    //Load data from server/local and prepare livedata objects (ready to be observed)
+    fun fetch(uuid: Int) {
+        loadingLD.value = true
+        bookLoadErrorLD.value = false
+        launch{
+            val db = buildDB(getApplication())
+            bookLD.value = db.bookDao().selectBook(uuid)
+        }
+    }
+
+    fun update(title:String, imgUrl:String, desc:String, pages:String, author:String, category:String, publisher:String, uuid:Int){
+        launch{
+            val db = buildDB(getApplication())
+            //Save to do changes
+            db.bookDao().update(title, imgUrl, desc, pages, author, category, publisher, uuid)
+        }
     }
 }
