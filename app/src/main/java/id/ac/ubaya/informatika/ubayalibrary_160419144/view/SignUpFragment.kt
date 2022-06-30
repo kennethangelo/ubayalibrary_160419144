@@ -48,8 +48,7 @@ class SignUpFragment : Fragment(), CreateUserClick, BackLoginClick {
     }
 
     override fun onLoginClick(v: View) {
-        val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
-        Navigation.findNavController(v).navigate(action)
+        Navigation.findNavController(v).popBackStack()
     }
 
     override fun onCreateNewUser(v: View) {

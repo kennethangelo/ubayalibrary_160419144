@@ -45,7 +45,6 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         launch {
             val db = buildDB(getApplication())
             profileLD.value = db.userDao().selectUser(username)
-            profileArticleLD.value = db.articleDao().selectArticleBasedOnUsername(username)
         }
     }
 

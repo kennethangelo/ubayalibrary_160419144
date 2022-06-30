@@ -34,24 +34,6 @@ class HomeFragment : Fragment() {
         viewModel.booksLD.observe(viewLifecycleOwner) {
             homeAdapter.updateBookList(it)
         }
-
-//        viewModel.bookLoadErrorLD.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                txtError.visibility = View.VISIBLE
-//            } else {
-//                txtError.visibility = View.GONE
-//            }
-//        }
-//
-//        viewModel.loadingLD.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                recView.visibility = View.GONE
-//                progressHome.visibility = View.VISIBLE
-//            } else {
-//                recView.visibility = View.VISIBLE
-//                progressHome.visibility = View.GONE
-//            }
-//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

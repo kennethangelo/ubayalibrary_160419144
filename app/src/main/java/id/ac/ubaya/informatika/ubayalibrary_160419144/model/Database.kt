@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase
         Article::class,
         Book::class,
         User::class
-    ), version = 3
+    ), version = 1
 )
 abstract class LibraryDatabase : RoomDatabase() {
     abstract fun articleDao(): ArticleDao

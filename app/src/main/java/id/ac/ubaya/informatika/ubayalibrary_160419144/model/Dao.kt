@@ -18,9 +18,6 @@ interface ArticleDao {
 
     @Query("UPDATE article SET title= :title, content = :content, imgUrl = :imgUrl WHERE uuid = :uuid")
     suspend fun updateArticle(title:String, content:String, imgUrl:String, uuid:Int)
-
-    @Query("SELECT a.* FROM article a INNER JOIN user u ON a.username = u.username WHERE a.username = :username")
-    suspend fun selectArticleBasedOnUsername(username:String):List<Article>
 }
 
 @Dao
@@ -37,7 +34,7 @@ interface BookDao {
     @Delete
     suspend fun deleteBook(book: Book)
 
-    @Query("UPDATE book SET title= :title, `desc` = :desc, imgUrl = :imgUrl, pages = :pages, author = :author, category = :category, publisher = :publisher WHERE uuid = :uuid")
+    @Query("UPDATE book SET title= :title, imgUrl = :imgUrl, `desc` = :desc, pages = :pages, author = :author, category = :category, publisher = :publisher WHERE uuid = :uuid")
     suspend fun update(title:String, imgUrl:String, desc:String, pages:String, author:String, category:String, publisher: String, uuid:Int)
 }
 
@@ -51,9 +48,6 @@ interface UserDao {
 
     @Query("SELECT * FROM user WHERE username = :username")
     suspend fun selectUser(username:String):User
-
-    @Query("UPDATE user SET password= :password, name = :name, dob = :dob, joinDate = :joinDate, bio = :bio, imgUrl = :imgUrl WHERE username = :username")
-    suspend fun updateUser(password:String, name:String, dob:String, joinDate:String, bio:String, imgUrl:String, username: String)
 }
 
 

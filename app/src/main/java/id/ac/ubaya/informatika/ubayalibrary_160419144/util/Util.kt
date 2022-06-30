@@ -20,13 +20,13 @@ import java.lang.Exception
 
 //Used to extend the loadImage method of ImageView
 //Passed image URL, and progress bar view object
-fun ImageView.loadImage(url: String?, progressBar: ProgressBar, height: Int?, width: Int?){
-    if(height != null && width != null){
+fun ImageView.loadImage(url: String?, progressBar: ProgressBar, height: Int?, width: Int?) {
+    if (height != null && width != null) {
         Picasso.get()
             .load(url)
-            .resize(width,height)
+            .resize(width, height)
             .error(R.drawable.ic_baseline_error_24)
-            .into(this, object: Callback {
+            .into(this, object : Callback {
                 override fun onSuccess() {
                     progressBar.visibility = View.GONE
                 }
@@ -39,7 +39,7 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar, height: Int?, wi
         Picasso.get()
             .load(url)
             .error(R.drawable.ic_baseline_error_24)
-            .into(this, object: Callback {
+            .into(this, object : Callback {
                 override fun onSuccess() {
                     progressBar.visibility = View.GONE
                 }
@@ -52,12 +52,18 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar, height: Int?, wi
 }
 
 @BindingAdapter("android:imageUrl", "android:progressBar")
-fun loadPhotoURL(view:ImageView, url:String?, pb:ProgressBar){
+fun loadPhotoURL(view: ImageView, url: String?, pb: ProgressBar) {
     view.loadImage(url, pb, null, null)
 }
 
-fun createNotificationChannel(context: Context, importance: Int, showBadge: Boolean, name:String, description: String){
-    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+fun createNotificationChannel(
+    context: Context,
+    importance: Int,
+    showBadge: Boolean,
+    name: String,
+    description: String
+) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val channelId = "${context.packageName}-$name"
         val channel = NotificationChannel(channelId, name, importance)
         channel.description = description
@@ -71,9 +77,10 @@ fun createNotificationChannel(context: Context, importance: Int, showBadge: Bool
 val DB_NAME = "librarydb"
 
 
-fun buildDB(context: Context):LibraryDatabase{
+fun buildDB(context: Context): LibraryDatabase {
     val db = Room.databaseBuilder(
-        context, LibraryDatabase::class.java, DB_NAME)
+        context, LibraryDatabase::class.java, DB_NAME
+    )
         .build()
     return db
 }

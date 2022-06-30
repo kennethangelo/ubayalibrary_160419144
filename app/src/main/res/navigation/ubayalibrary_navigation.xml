@@ -100,8 +100,8 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -112,8 +112,8 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="id.ac.ubaya.informatika.ubayalibrary_160419144.view.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
